@@ -1,0 +1,50 @@
+/* Styling untuk blok utama konten */
+.features {
+    margin: 3em auto;
+    padding: 1em;
+}
+
+/* Styling untuk judul setiap bagian */
+.feature-title {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    /* Tambahan border bawah untuk memisahkan judul */
+    padding-bottom: 5px; 
+    border-bottom: 2px solid #f0f0f0; 
+}
+
+/* Styling untuk kotak konten (Testimoni, Kritik, Saran) agar terlihat seperti blok di wireframe */
+.content-box {
+    background-color: #f8f9fa; /* Warna latar belakang kotak */
+    border: 1px solid #dee2e6; /* Border tipis */
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Sedikit bayangan */
+}
+
+/* Menyesuaikan tinggi kotak Testimoni agar seimbang dengan Kritik & Saran di sampingnya */
+/* Total tinggi Kritik + Saran (termasuk margin/padding) */
+.testimonial-box {
+    min-height: 480px; /* Sesuaikan nilai ini jika tampilan Anda kurang seimbang */
+}
+
+/* Styling untuk Footer */
+.page-footer {
+    background-color: #333;
+    color: #fff;
+}
+.footer-copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+/* Media Query untuk Mobile (Opsional, agar tampilan di HP lebih baik) */
+@media (max-width: 991.98px) {
+    /* Pada layar tablet/mobile, blok Testimonial akan setinggi blok di kanannya */
+    .testimonial-box {
+        min-height: 100px;
+    }
+}

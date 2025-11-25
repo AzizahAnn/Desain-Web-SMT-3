@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Sederhana</title>
+  <style>
+    /* ======= Tema Default ======= */
+    body {
+      font-family: 'Poppins', 'sans-serif';
+      background-color: #d0eeff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      transition: 0.4s;
+    }
+
+    .kalkulator {
+      background-color: #9ccdf5;
+      color: #003366;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 300px;
+    }
+
+    input, select {
+      padding: 10px;
+      margin: 8px;
+      width: 80%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #hasil {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="kalkulator"> 
+    <h2>Kalkulator</h2>
+
+    <input id="angka1" type="number" placeholder="Masukkan angka pertama">
+    <input id="angka2" type="number" placeholder="Masukkan angka kedua">
+
+    <select id="operasi">
+      <option value="+">Tambah (+)</option>
+      <option value="-">Kurang (−)</option>
+      <option value="*">Kali (×)</option>
+      <option value="/">Bagi (÷)</option>
+    </select>
+
+    <button onclick="hitung()">Hitung</button>
+    <p id="hasil">Hasil: -</p>
+  </div>
+
+  <!-- Hubungkan file JavaScript -->
+  <script src="scripts/latihan_1.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Web Storage</title>
+        <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:ital,wght@0,100;0,400;0,700&display=swap');
+        body { font-family: "Josefin Sans", sans-serif; }
+        
+        .tulisan {
+        text-align: center;
+        margin: auto;
+        border: 2px solid #ccc;
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Disesuaikan agar di tengah vertikal */
+        padding: 20px;
+        }
+        
+        .label { text-align: center; margin-top: 20px; }
+        .switch {
+        position: relative; display: inline-block; width: 60px; height: 34px;
+        }
+        
+        .switch input { opacity: 0; width: 0; height: 0; }
+        
+        .slider {
+        position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #ccc; -webkit-transition: .4s; transition: .4s;
+        }
+        
+        .slider:before {
+        position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px;
+        background-color: white; -webkit-transition: .4s; transition: .4s;
+        }
+        
+        input:checked + .slider { background-color: #2196F3; }
+        input:focus + .slider { box-shadow: 0 0 1px #2196F3; }
+        input:checked + .slider:before {
+        -webkit-transform: translateX(26px); -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        }
+
+        /*Dark mode CSS*/
+        
+        .dark-mode { 
+        background-color: #333; 
+        color: #fff; 
+        }
+        
+        .dark-mode .tulisan {
+        border: 2px solid #fff;
+       }
+
+</style>
+</head>
+<body>
+    <div class="tulisan">
+        <h1>Universitas Sebelas Maret</h1>
+        <h2>Pendidikan Teknik Informatika dan Komputer</h2>
+    </div>
+    <div class="label">
+        <h1>Dark Mode</h1>
+        <label class="switch">
+            <input type="checkbox" onchange="ubahTema(event)" id="themeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+   <script type="text/javascript">
+        // Pastikan Anda sudah menambahkan id="themeToggle" pada input checkbox di HTML
+
+        const body = document.body;
+        const themeToggle = document.getElementById('themeToggle');
+
+        // 1. Fungsi untuk mengubah tema
+        function applyTheme(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                themeToggle.checked = true; // Set toggle ke posisi 'checked'
+                localStorage.setItem('theme', 'dark'); // Simpan status
+            } else {
+                body.classList.remove('dark-mode');
+                themeToggle.checked = false;
+                localStorage.setItem('theme', 'light'); // Simpan status
+            }
+        }
+
+        // 2. Cek Local Storage saat halaman dimuat
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            applyTheme(true);
+        } else {
+            // Default light mode jika tidak ada data tersimpan (atau tersimpan 'light')
+            applyTheme(false); 
+        }
+
+        // 3. Fungsi yang dipanggil saat tombol diubah
+        function ubahTema(event) {
+            // Panggil applyTheme berdasarkan status checkbox
+            applyTheme(event.target.checked);
+        }
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+</body>
+</html>

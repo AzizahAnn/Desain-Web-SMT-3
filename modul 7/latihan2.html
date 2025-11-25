@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Jam Digital jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { text-align: center; font-family: Arial; margin-top: 50px; }
+    h1 { font-size: 28px; margin-bottom: 10px; }
+    h2 { font-size: 36px; margin: 0;}
+    #jam { font-size: 50px; margin-bottom: 20px; }
+    button { padding: 8px 16px; }
+  </style>
+</head>
+<body>
+  <h1 id="tanggal">Placeholder Tanggal</h1>
+  <h2 id="jam">00:00:00</h2>
+  <button id="tombol">START/STOP</button>
+
+  <script>
+    $(document).ready(function() {
+      let waktu = null;
+      let jalan = false;
+
+      function pad(num) {
+        return num < 10 ? '0' + num : num;
+      }
+
+      function updateJam() {
+        const waktu = new Date();
+
+        const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        const bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
+                       "Agustus", "September", "Oktober", "November", "Desember"];
+        
+        const namahari = hari[waktu.getDay()];
+        const tanggal = waktu.getDate();
+        const namabulan = bulan[waktu.getMonth()];
+        const tahun = waktu.getFullYear();
+        $("#tanggal").text(`${namahari}, ${tanggal} ${namabulan} ${tahun}`);
+        const jam = pad(waktu.getHours());
+        const menit = pad(waktu.getMinutes());
+        const detik = pad(waktu.getSeconds());
+        $("#jam").text(`${jam}:${menit}:${detik}`);
+      }
+
+      $("#tombol").click(function() {
+        if (!jalan) {
+          updateJam();
+          waktu = setInterval(updateJam, 1000);
+          jalan = true;
+        } else {
+          clearInterval(waktu);
+          jalan = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

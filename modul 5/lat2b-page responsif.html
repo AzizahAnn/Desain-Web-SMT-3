@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desain Responsif - Flexbox</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #wrapper {
+      width: 100%;
+      margin: auto;
+    }
+
+    /* Header */
+    #header {
+      border: 2px solid red;
+      padding: 20px;
+    }
+
+    /* Area Services */
+    #nav {
+      border: 2px solid red;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; 
+      gap: 20px;
+    }
+
+    #nav h2 {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .box {
+      background: red;
+      font-weight: bold;
+      padding: 20px;
+      border: 2px solid red;
+      height: 120px;
+      display: flex;
+    }
+
+    /* Desktop - 3 sejajar, 1 bawah full */
+    .box:nth-child(2),
+    .box:nth-child(3),
+    .box:nth-child(4) {
+      flex: 1 1 calc(33.333% - 20px);
+    }
+
+    .box:nth-child(5) {
+      flex: 1 1 100%;
+    }
+
+    /* Footer */
+    #footer {
+      border: 2px solid red;
+      padding: 20px;
+    }
+
+    /* Tablet */
+    @media (max-width: 1080px) {
+      .box:nth-child(2),
+      .box:nth-child(3),
+      .box:nth-child(4) {
+        flex: 1 1 calc(50% - 10px);
+      }
+      .box:nth-child(5) {
+        flex: 1 1 100%;
+      }
+    }
+
+    /* Smartphone */
+    @media (max-width: 640px) {
+      #nav {
+        flex-direction: column;
+      }
+      .box {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h2>Header Section</h2>
+    </div>
+
+    <div id="nav">
+      <h2>Services</h2>
+      <div class="box">Box 1</div>
+      <div class="box">Box 2</div>
+      <div class="box">Box 3</div>
+      <div class="box">Box 4</div>
+    </div>
+
+    <div id="footer">
+      <h2>Footer</h2>
+    </div>
+  </div>
+</body>
+</html>

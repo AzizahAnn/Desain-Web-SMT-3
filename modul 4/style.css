@@ -1,0 +1,64 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #e1e1e1;
+}
+
+.header {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 6px 24px;
+    text-align: left;
+    color: white;
+    margin: 0;
+    letter-spacing: 1px;
+    font: caption;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.menu {
+    position: sticky;
+    top: 0;
+    background: rgb(42, 166, 154);
+    padding: 10px;
+    text-align: left;
+    z-index: 2000;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0px 15px;
+    font-size: 18px;
+}
+
+.menu a:hover {
+    color: yellow;
+}
+
+.video-container {
+  position: relative;
+  z-index: 1000;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: 56.25%; 
+  height: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;   
+  height: 100%;  
+  border: none;
+  pointer-events: auto;
+}
+
+.content {
+    padding: 0px 24px;
+    text-align: justify;
+    font-size: 20px;
+}
