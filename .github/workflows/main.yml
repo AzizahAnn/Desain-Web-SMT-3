@@ -24,7 +24,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           # Sesuaikan dengan versi PHP project Anda (PHP 8.4) [cite: 24]
-          php-version: '8.2' 
+          php-version: '8.4' 
           # Instal ekstensi SQLite untuk koneksi DB [cite: 27]
           extensions: gd, mbstring, pdo_sqlite, bcmath 
           tools: composer # Pastikan composer tersedia
