@@ -1,21 +1,18 @@
-# Nama Workflow yang akan muncul di tab 'Actions'
+# File: .github/workflows/main.yml
 name: Laravel CI (SQLite)
 
-# Kapan workflow ini harus dijalankan
 on:
   push:
-    branches: [ "main", "dev" ] # Dijalankan saat push ke main atau dev
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "main", "dev" ] # Dijalankan saat ada PR ke main atau dev
-  workflow_dispatch: # Memungkinkan trigger manual dari GitHub UI
+    branches: [ "main", "dev" ]
+  workflow_dispatch:
 
 jobs:
-  # Nama Job (Pekerjaan) utama
   laravel-ci:
-    runs-on: ubuntu-latest # Jalankan di mesin virtual Linux (cepat)
+    runs-on: ubuntu-latest
     
     steps:
-      # LANGKAH 1: Ambil kode dari repository
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -23,13 +20,12 @@ jobs:
       - name: Setup PHP Environment
         uses: shivammathur/setup-php@v2
         with:
-          # Sesuaikan dengan versi PHP project Anda (PHP 8.4) [cite: 24]
-          php-version: '8.4' 
-          # Instal ekstensi SQLite untuk koneksi DB [cite: 27]
+          # Ganti ke 8.3 (Stabil dan umum tersedia)
+          php-version: '8.3' 
           extensions: gd, mbstring, pdo_sqlite, bcmath 
-          tools: composer # Pastikan composer tersedia
+          tools: composer
 
-      # LANGKAH 3: Install Dependensi Composer (composer install)
+      # LANGKAH 3: Install Dependensi Composer
       - name: Install Composer Dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
       
@@ -42,19 +38,17 @@ jobs:
       # LANGKAH 5: Setup Database SQLite & Migrasi/Seeder
       - name: Setup SQLite Database & Run Migrations
         run: |
-          # Buat file database.sqlite di folder database/
           mkdir -p database 
           touch database/database.sqlite
           
-          # Ubah koneksi ke SQLite di file .env untuk Job ini [cite: 38]
+          # Ubah koneksi ke SQLite di file .env
           sed -i 's/DB_CONNECTION=mysql/DB_CONNECTION=sqlite/' .env
           
-          # Jalankan Migrasi dan Seeder (termasuk AdminSeeder) 
           php artisan migrate --force --seed 
-
-      # LANGKAH 6: Buat Storage Link (Penting untuk Upload CV)
+          
+      # LANGKAH 6: Buat Storage Link (Perbaikan: Pastikan indentasi tepat!)
       - name: Create Storage Link for Uploads
-        [cite_start]run: php artisan storage:link # 
+        run: php artisan storage:link
 
       # LANGKAH 7 (Opsional): Jalankan PHPUnit Tests
       # - name: Run PHPUnit Tests
